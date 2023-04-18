@@ -1,0 +1,4 @@
+SROP，
+程序开启栈NX，利用sigreturn frame调用sys_mprotect系统调用，设置一段可读可写可执行的空间
+先通过溢出覆盖ret为vul函数，并趁机把syscall的地址、sigreturn frame写入到栈中
+然后发送15个a，发送15个是因为15是sys_rt_sigreturn系统调用的系统调用号，然后发送shellcode到栈上，执行shellcode
